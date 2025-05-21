@@ -1,5 +1,6 @@
 # CommandHandler
 An Arduino library that turns the serial monitor into a CLI, with an Arduino IoT Cloud integration.
+If this library was of any use for you, please consider starring it!
 
 **Features:**
 - Register commands with **descriptions**, **argument limits**, and **custom argument types** (INT, FLOAT, STRING).
@@ -12,6 +13,11 @@ An Arduino library that turns the serial monitor into a CLI, with an Arduino IoT
 - Use the Arduino Cloud chat widget as the command-line interface.
 - **Remotely control** and debug your device from the cloud **without needing serial communication**.
 - Input commands **anywhere**, from a computer or a smartphone.
+
+**For help, see:**
+- [Examples](https://github.com/Uiop3385/CommandHandler/tree/main/examples)
+- [Serial Monitor documentation](https://github.com/Uiop3385/CommandHandler/blob/main/extras/SerialMonitorDocs.md)
+- [Arduino Cloud integration documentation](https://github.com/Uiop3385/CommandHandler/blob/main/extras/IoTCloudDocs.md)
 
 Write functions in your code, then register them as commands.
 Basic example usage (for the serial monitor):
@@ -40,5 +46,3 @@ void loop() {
     handler.loop();  // Check for new command inputs on each loop
 }
 ```
-
-For documentation, see the examples or the Markdown files in /extras.
