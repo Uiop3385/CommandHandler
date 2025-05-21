@@ -1,0 +1,34 @@
+#######################################
+# CommandHandler Library - keywords.txt
+#######################################
+
+#######################################
+# Classes
+#######################################
+CommandHandler	KEYWORD1
+
+#######################################
+# Methods
+#######################################
+loop	KEYWORD2
+registerCommand	KEYWORD2
+
+#######################################
+# Constructor / Destructor
+#######################################
+CommandHandler	KEYWORD2
+~CommandHandler	KEYWORD2
+
+#######################################
+# Types
+#######################################
+ArgType	KEYWORD1
+Command	KEYWORD1
+CommandCallback	KEYWORD1
+
+#######################################
+# Enum values
+#######################################
+STRING	LITERAL1
+INT	LITERAL1
+FLOAT	LITERAL1
