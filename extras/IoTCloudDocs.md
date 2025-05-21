@@ -27,6 +27,8 @@ Start editing, and add a "Messenger" widget.
 Link the variable you've just created to it.
 You can modify the other settings and position it as you'd like.
 
+---
+
 ### Sketch:
 
 Include the correct version of the library (see the other document).
@@ -47,7 +49,7 @@ void onCloudVarNameChange() {
    if (cloudVarName.length() == 0) {
      return;
    }
-   String response = commandHandler.processInput(cloudVarName);
+   String response = handler.processInput(cloudVarName);
    cloudVarName = response;
 }
 ```
