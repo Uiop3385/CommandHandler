@@ -1,9 +1,11 @@
 # Serial Monitor Documentation
 
 Welcome! This guide will explain everything you need to know about the library for usage in the serial monitor.
-  
- ## Arduino Cloud Integration
+
+
+## Arduino Cloud Integration
 See [this guide](https://github.com/Uiop3385/CommandHandler/blob/main/extras/IoTCloudDocs.md) for the specifics. The rest of the documentation is found here.
+
 
 ## Installation
 
@@ -11,11 +13,13 @@ This is most easily done from the Library Manager. Search `CommandHandler`, then
 
 Alternatively, download the latest release of the source code [here](https://github.com/Uiop3385/CommandHandler/releases/latest), then extract to the "libraries/" folder of the IDE.
 
+
 ## Importing the library
 
 Add `#include <CommandHandler.h>` to the beginning of your sketch for the serial monitor version.
 If you're using the Arduino Cloud integration, add this instead:
 `#include <CommandHandler_IoTCloud.h>`.
+
 
 ## Usage examples
 
@@ -48,6 +52,7 @@ void loop() {
 
 For an example of usage with arguments, refer to [ArgumentHandling.ino](https://github.com/Uiop3385/CommandHandler/blob/main/examples/ArgumentHandling.ino).
   
+
 
 ## Reference
 
@@ -125,7 +130,7 @@ This function is used to register new commands.
 
 ### Creating argument types:
 ```cpp
-enum  ArgType {
+enum ArgType {
   STRING,
   INT,
   FLOAT
