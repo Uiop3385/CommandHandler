@@ -14,11 +14,20 @@ CommandHandler::CommandHandler(size_t maxCommands, size_t maxArgs)
 void CommandHandler::registerCommand(const String& command, CommandCallback callback, const String& description,
                                      size_t minArgs, size_t maxArgs, const ArgType* argTypes, size_t argTypesCount) {
     if (commandCount < maxCommands) {
-        commands[commandCount] = {command, callback, description, minArgs, maxArgs, nullptr, argTypesCount};
+        commands[commandCount].name = command;
+        commands[commandCount].callback = callback;
+        commands[commandCount].description = description;
+        commands[commandCount].minArgs = minArgs;
+        commands[commandCount].maxArgs = maxArgs;
+        commands[commandCount].argTypesCount = argTypesCount;
+
         if (argTypes != nullptr && argTypesCount > 0) {
             commands[commandCount].argTypes = new ArgType[argTypesCount];
             memcpy(commands[commandCount].argTypes, argTypes, sizeof(ArgType) * argTypesCount);
+        } else {
+            commands[commandCount].argTypes = nullptr;
         }
+
         commandCount++;
     } else {
         Serial.println("Error: Maximum number of commands reached");
@@ -49,20 +58,20 @@ bool CommandHandler::validateArgs(const String args[], size_t argCount, const Co
     }
 
     if (cmd.argTypes != nullptr) {
-        for (size_t i = 0; i < argCount; i++) {
+        for (size_t i = 0; i < argCount && i < cmd.argTypesCount; i++) {
             switch (cmd.argTypes[i]) {
-            case INT:
-                if (args[i].toInt() == 0 && args[i] != "0") {
-                    return false;
-                }
-                break;
-            case FLOAT:
-                if (args[i].toFloat() == 0.0f && args[i] != "0" && args[i] != "0.0") {
-                    return false;
-                }
-                break;
-            case STRING:
-                break;
+                case INT:
+                    if (args[i].toInt() == 0 && args[i] != "0") {
+                        return false;
+                    }
+                    break;
+                case FLOAT:
+                    if (args[i].toFloat() == 0.0f && args[i] != "0" && args[i] != "0.0") {
+                        return false;
+                    }
+                    break;
+                case STRING:
+                    break; // All values are valid as strings
             }
         }
     }
@@ -73,14 +82,14 @@ void CommandHandler::executeCommand(const String& command, const String args[], 
     for (size_t i = 0; i < commandCount; i++) {
         if (commands[i].name == command) {
             if (!validateArgs(args, argCount, commands[i])) {
-                response = "Error: Invalid arguments for command: " + command;
+                response = "Error: Incorrect arguments for command '" + command + "'";
                 return;
             }
             response = commands[i].callback(args, argCount);
             return;
         }
     }
-    response = "Unknown command: " + command + ". Use 'help' for a list of commands.";
+    response = "Unknown command: '" + command + "'. Use 'help' to list available commands.";
 }
 
 String CommandHandler::processInput(const String& input) {
@@ -98,7 +107,23 @@ String CommandHandler::processInput(const String& input) {
 String CommandHandler::helpCommand(const String args[], size_t argCount) {
     String result = "Available commands:\n";
     for (size_t i = 0; i < commandCount; i++) {
-        result += commands[i].name + " - " + commands[i].description + "\n";
+        result += commands[i].name;
+
+        for (size_t j = 0; j < commands[i].argTypesCount; j++) {
+            result += " <";
+            switch (commands[i].argTypes[j]) {
+                case STRING: result += "STRING"; break;
+                case INT: result += "INT"; break;
+                case FLOAT: result += "FLOAT"; break;
+            }
+            result += ">";
+        }
+
+        if (commands[i].description.length() > 0) {
+            result += " - " + commands[i].description;
+        }
+
+        result += "\n";
     }
     return result;
 }

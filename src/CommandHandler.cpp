@@ -121,30 +121,27 @@ String CommandHandler::helpCommand(const String args[], size_t argCount) {
     for (size_t i = 0; i < commandCount; i++) {
         result += commands[i].name;
 
-        if (commands[i].argTypesCount > 0) {
+        for (size_t j = 0; j < commands[i].argTypesCount; j++) {
             result += " <";
-            for (size_t j = 0; j < commands[i].argTypesCount; j++) {
-                switch (commands[i].argTypes[j]) {
-                    case ArgType::STRING:
-                        result += "STRING";
-                        break;
-                    case ArgType::INT:
-                        result += "INT";
-                        break;
-                    case ArgType::FLOAT:
-                        result += "FLOAT";
-                        break;
-                }
-                if (j < commands[i].argTypesCount - 1) {
-                    result += ", ";
-                }
+            switch (commands[i].argTypes[j]) {
+                case ArgType::STRING:
+                    result += "STRING";
+                    break;
+                case ArgType::INT:
+                    result += "INT";
+                    break;
+                case ArgType::FLOAT:
+                    result += "FLOAT";
+                    break;
             }
             result += ">";
         }
 
         if (commands[i].description.length() > 0) {
-            result += " - " + commands[i].description;
+            result += " - ";
+            result += commands[i].description;
         }
+
         result += "\n";
     }
     return result;
