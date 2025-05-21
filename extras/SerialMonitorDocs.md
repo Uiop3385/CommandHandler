@@ -23,7 +23,7 @@ If you're using the Arduino Cloud integration, add this instead:
 
 ## Usage examples
 
-See the [Minimal.ino example](https://github.com/Uiop3385/CommandHandler/blob/main/examples/Minimal.ino).
+See the [Minimal.ino example](https://github.com/Uiop3385/CommandHandler/blob/main/examples/Minimal/Minimal.ino).
 
 ```cpp
 #include <CommandHandler.h>
@@ -50,7 +50,7 @@ void loop() {
 }
 ```
 
-For an example of usage with arguments, refer to [ArgumentHandling.ino](https://github.com/Uiop3385/CommandHandler/blob/main/examples/ArgumentHandling.ino).
+For an example of usage with arguments, refer to [ArgumentHandling.ino](https://github.com/Uiop3385/CommandHandler/blob/main/examples/ArgumentHandling/ArgumentHandling.ino).
   
 
 

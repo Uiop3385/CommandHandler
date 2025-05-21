@@ -6,7 +6,7 @@ The information common to both versions of the library is present in [the other 
 
 ## Usage examples
 
-See the [IoTCloud_Example.ino example](https://github.com/Uiop3385/CommandHandler/blob/main/examples/IoTCloud_Example.ino).
+See the [IoTCloud_Example.ino example](https://github.com/Uiop3385/CommandHandler/blob/main/examples/IoTCloud_Example/IoTCloud_Example.ino).
 
 ## Implementing
 This guide expects you to know the basics of Arduino Cloud.
