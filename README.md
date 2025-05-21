@@ -1,8 +1,20 @@
 # CommandHandler
-An Arduino library that turns the serial monitor, or the Arduino Cloud chat widget, into a CLI.
+An Arduino library that turns the serial monitor into a CLI, with an Arduino IoT Cloud integration.
+
+**Features:**
+- Register commands with **descriptions**, **argument limits**, and **custom argument types** (INT, FLOAT, STRING).
+- A built-in help command automatically lists all available commands, their argument types, and descriptions. **No need to make it yourself!**
+- Supports per-argument type validation (ensuring the first argument is an INT, the second a FLOAT, etc).
+- **Easy to use**
+- Clean and user-friendly error handling
+
+**Arduino Cloud integration:**
+- Use the Arduino Cloud chat widget as the command-line interface.
+- **Remotely control** and debug your device from the cloud **without needing serial communication**.
+- Input commands **anywhere**, from a computer or a smartphone.
 
 Write functions in your code, then register them as commands.
-Example usage (for the serial monitor):
+Basic example usage (for the serial monitor):
 ```cpp
 #include <CommandHandler.h>
 
